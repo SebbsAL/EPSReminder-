@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPSReminder! - Tu asistente de recordatorios</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo EPSReminder!" class="logo">
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>¡No olvides lo importante con <span class="highlight">EPSReminder!</span></h1>
+            <p>El bot de Discord más adorable y eficiente para gestionar tus citas médicas, EPS y recordatorios personales directamente en tus canales.</p>
+            <div class="hero-buttons">
+                <a href="https://discord.gg/2F9FWFFu" target="_blank" class="btn btn-large btn-discord">¡Añadir a Discord!</a>
+                <button id="open-modal-btn" class="btn btn-large btn-outline">Agendar Recordatorio</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="hero-banner.jpg" alt="Mascota Enfermera Pingüino EPSReminder!">
+        </div>
+    </header>
+
+    <eps-form-component id="reminder-modal"></eps-form-component>
+
+    <script>
+        const modalComponent = document.getElementById('reminder-modal');
+        const openBtn = document.getElementById('open-modal-btn');
+
+        openBtn.addEventListener('click', () => {
+            modalComponent.setAttribute('open', 'true');
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

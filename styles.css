@@ -1,0 +1,189 @@
+/* Nueva paleta de colores para Modo Oscuro con alto contraste */
+:root {
+    --bg-dark: #0d0b14;          /* Fondo oscuro profundo */
+    --card-dark: #161224;        /* Contenedores oscuros intermedios */
+    --pastel-pink: #e591b6;      /* Rosa pastel brillante */
+    --wine-accent: #7a1f4a;      /* Granate/Púrpura de contraste */
+    --text-light: #f3f0f5;       /* Texto principal claro */
+    --text-muted: #a69fb0;       /* Texto secundario atenuado */
+    --border-radius: 24px;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+}
+
+/* --- Navegación --- */
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 5%; 
+    background-color: rgba(22, 18, 36, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(229, 145, 182, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 80px; /* Mantiene la barra delgada y elegante */
+}
+
+.logo-container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* Logo GIGANTE y sin esquinas cuadradas */
+.logo-container .logo {
+    height: 260px; /* ¡Tamaño masivo para apreciar los detalles! */
+    width: auto;
+    
+    /* AQUÍ ESTÁ LA MAGIA: Corta las esquinas blancas y lo vuelve un óvalo/píldora */
+    border-radius: 150px; 
+    
+    /* Posición absoluta para que flote sobre el fondo oscuro sin romper la barra */
+    position: absolute;
+    top: 5px; /* Lo ancla un poco más arriba en la barra */
+    left: 0;
+    
+    /* Le damos una sombra brillante para que parezca un "sticker" o medalla */
+    box-shadow: 0 10px 35px rgba(229, 145, 182, 0.35);
+    
+    z-index: 1001;
+    transition: transform 0.3s ease;
+}
+
+.logo-container .logo:hover {
+    transform: scale(1.05);
+}
+
+/* --- Botones Estilizados --- */
+.btn {
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--wine-accent);
+    color: var(--text-light);
+    padding: 12px 28px;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(122, 31, 74, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: #94295c;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(229, 145, 182, 0.3);
+}
+
+.btn-large {
+    padding: 16px 38px;
+    font-size: 1.1rem;
+}
+
+.btn-discord {
+    background: linear-gradient(135deg, var(--wine-accent), #94295c);
+    color: white;
+    box-shadow: 0 8px 24px rgba(122, 31, 74, 0.4);
+}
+
+.btn-discord:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(229, 145, 182, 0.4);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--pastel-pink);
+    border: 2px solid var(--pastel-pink);
+    margin-left: 15px;
+}
+
+.btn-outline:hover {
+    background-color: rgba(229, 145, 182, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(229, 145, 182, 0.2);
+}
+
+/* --- Sección Hero --- */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6rem 5%;
+    max-width: 1300px;
+    margin: 0 auto;
+    gap: 4rem;
+    min-height: calc(100vh - 160px);
+    box-sizing: border-box;
+}
+
+.hero-content {
+    flex: 1.2;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.hero .highlight {
+    color: var(--pastel-pink);
+    text-shadow: 0 0 20px rgba(229, 145, 182, 0.3);
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img {
+    max-width: 100%;
+    width: 500px;
+    border-radius: var(--border-radius);
+    /* Resplandor externo para integrar la imagen pastel en el fondo oscuro */
+    filter: drop-shadow(0 0 35px rgba(229, 145, 182, 0.35));
+    animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Responsividad */
+@media (max-width: 992px) {
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 3rem 5%;
+        gap: 2rem;
+    }
+    .hero h1 { font-size: 2.5rem; }
+    .btn-outline { margin-left: 0; margin-top: 15px; display: block; }
+    .btn-discord { display: block; }
+}
