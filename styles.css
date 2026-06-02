@@ -39,16 +39,30 @@ body {
     margin-right: 20px; /* Espacio entre el logo y el resto del contenido */
 }
 
+/* Logo GIGANTE ajustado para que no se tape el gorrito */
 .logo-container .logo {
-    height: 180px; /* Tamaño grande pero manejable */
+    height: 220px; /* Reduje ligeramente el tamaño para dar más aire */
     width: auto;
-    border-radius: 150px;
-    /* Eliminamos position: absolute para que el navegador sepa que el logo ocupa este espacio */
-    position: relative; 
+    border-radius: 150px; 
+    
+    /* Cambiamos a absolute para control total, pero ajustamos el top */
+    position: absolute; 
+    top: 15px; /* Bajamos el logo desde el borde superior de la navbar */
+    left: 5%;  /* Lo alineamos con el margen de tu sitio */
+    
     box-shadow: 0 10px 35px rgba(229, 145, 182, 0.35);
     z-index: 1001;
     transition: transform 0.3s ease;
-    margin-top: 40px; /* Lo bajamos un poco para que sobresalga estéticamente */
+}
+
+/* IMPORTANTE: Añade esto para que el contenido no se encime */
+.navbar {
+    /* ... tus otros estilos ... */
+    padding-left: calc(5% + 230px); /* Esto empuja el menú a la derecha para que no toque el logo */
+}
+
+.logo-container .logo:hover {
+    transform: scale(1.05);
 }
 
 
