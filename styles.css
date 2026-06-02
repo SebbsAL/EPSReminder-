@@ -39,6 +39,18 @@ body {
     margin-right: 20px; /* Espacio entre el logo y el resto del contenido */
 }
 
+.logo-container .logo {
+    height: 180px; /* Tamaño grande pero manejable */
+    width: auto;
+    border-radius: 150px;
+    /* Eliminamos position: absolute para que el navegador sepa que el logo ocupa este espacio */
+    position: relative; 
+    box-shadow: 0 10px 35px rgba(229, 145, 182, 0.35);
+    z-index: 1001;
+    transition: transform 0.3s ease;
+    margin-top: 40px; /* Lo bajamos un poco para que sobresalga estéticamente */
+}
+
 
 
 .logo-container .logo:hover {
