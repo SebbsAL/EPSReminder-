@@ -1,5 +1,6 @@
-🤖 Bienvenido a EPSReminder
-¡Olvídate de perder citas médicas o eventos importantes! EPSReminder es tu asistente personal diseñado para gestionar recordatorios de salud y tareas personales directamente en tu Discord.
+🤖 Bienvenido a EPSReminder!
+
+¡Olvídate de perder citas médicas o eventos importantes! EPSReminder! es tu asistente personal diseñado para gestionar recordatorios de salud y tareas personales directamente en tu Discord.
 
 ✨ ¿Cómo funciona?
 Hemos simplificado todo para que no tengas que configurar nada. Tu experiencia comienza en nuestra plataforma web:
@@ -31,7 +32,5 @@ La información que ingresas es procesada exclusivamente para enviarte los recor
 ¿Tienes alguna duda o quieres sugerir una mejora? Estamos aquí para ayudarte:
 
 Desarrolladores: Sebastian Ayala, Brayan Fonseca y Angel Luque
-
-Comunidad: Únete a nuestro Discord desde https://eps-reminder.vercel.app/
 
 Desarrollado con ❤️ para facilitarte la vida.
