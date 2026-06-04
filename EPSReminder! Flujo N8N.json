@@ -1,0 +1,521 @@
+{
+  "name": "EPSReminder!",
+  "nodes": [
+    {
+      "parameters": {
+        "jsCode": "// Generar una hora aleatoria entre las 08:00 y las 18:00\nconst horaInicio = 8;\nconst horaFin = 18;\n\n// Generar hora aleatoria\nconst horaRandom = Math.floor(Math.random() * (horaFin - horaInicio + 1)) + horaInicio;\n\n// Formatear a dos dígitos (ej: 9 -> 09)\nconst horaFormateada = horaRandom.toString().padStart(2, '0') + \":00\";\n\nreturn {\n  json: {\n    ...$input.all()[0].json, // Mantiene los datos del formulario\n    hora_asignada: horaFormateada // Nuevo campo con la hora aleatoria\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -768,
+        96
+      ],
+      "id": "6a5b34fa-bbe1-4cd0-bf3e-35094cc70a1f",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.plan }}",
+                    "rightValue": "Sanitas",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "96ecb44b-2890-411c-9aec-44f97211c8a4"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "ff3d49ef-d2ce-46aa-bec8-80769958b9bb",
+                    "leftValue": "={{ $json.body.plan }}",
+                    "rightValue": "Coomeva",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "0aa8c77a-704e-41a5-bf5d-0ed835d1b8b3",
+                    "leftValue": "={{ $json.body.plan }}",
+                    "rightValue": "Sura",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -544,
+        80
+      ],
+      "id": "b8b31dc5-a239-432f-a36b-c0749630125d",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1WSy1ogcKyXZQQjfoSIkDQb2cx68skITUBPKNjRvpFmg",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Hoja 1",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nombre Completo": "={{ $json['Nombre Completo:'] }}",
+            "Edad": "={{ $json['Edad:'] }}",
+            "Genero": "={{ $json['Genero:'] }}",
+            "EPS": "={{ $json['EPS:'] }}",
+            "Fecha cita": "={{ $json['Fecha Cita:'] }}",
+            "Hora": "={{ $json.hora_asignada }}",
+            "Sede": "={{ $json.Sede }}",
+            "Usuario Discord": "={{ $json['Nombre de usuario de Discord:'] }}"
+          },
+          "matchingColumns": [
+            "Nombre Completo"
+          ],
+          "schema": [
+            {
+              "id": "Nombre Completo",
+              "displayName": "Nombre Completo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Edad",
+              "displayName": "Edad",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Genero",
+              "displayName": "Genero",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "EPS",
+              "displayName": "EPS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Fecha cita",
+              "displayName": "Fecha cita",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Hora",
+              "displayName": "Hora",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Sede",
+              "displayName": "Sede",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Usuario Discord",
+              "displayName": "Usuario Discord",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -96,
+        96
+      ],
+      "id": "49d08ece-4f33-418f-ab87-166611debd5e",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "mlV6egSXFJhis9fs",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "guildId": {
+          "__rl": true,
+          "value": "1511392088091132015",
+          "mode": "list",
+          "cachedResultName": "Servidor_Prueba_Bot",
+          "cachedResultUrl": "https://discord.com/channels/1511392088091132015"
+        },
+        "sendTo": "user",
+        "userId": {
+          "__rl": true,
+          "value": "={{ $('Get many members').all().find(item => item.json.user.username.toLowerCase() == $('Webhook').item.json.body.id_usuario.toLowerCase()).json.user.id }}",
+          "mode": "id"
+        },
+        "content": "=Hola {{ $('Code in JavaScript').item.json.body.nombre }} de {{ $('Code in JavaScript').item.json.body.edad }} años!. Tienes una cita programada en {{ $('Code in JavaScript').item.json.body.sede }} con la EPS {{ $('Code in JavaScript').item.json.body.plan }} en la fecha {{ $('Code in JavaScript').item.json.body.fecha_inicio }} a las {{ $('Code in JavaScript').item.json.hora_asignada }} Te esperamos!",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        352,
+        96
+      ],
+      "id": "85cb4093-4f2e-4936-86b1-4d41aff40250",
+      "name": "Send a message",
+      "webhookId": "8ccc81bd-dcb3-427d-8881-8be3e2dc1ece",
+      "executeOnce": true,
+      "credentials": {
+        "discordBotApi": {
+          "id": "9tkZB3TvJn1RnoWl",
+          "name": "Discord Bot account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "member",
+        "guildId": {
+          "__rl": true,
+          "value": "1511392088091132015",
+          "mode": "list",
+          "cachedResultName": "Servidor_Prueba_Bot",
+          "cachedResultUrl": "https://discord.com/channels/1511392088091132015"
+        },
+        "returnAll": true,
+        "options": {
+          "simplify": true
+        }
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        128,
+        96
+      ],
+      "id": "7f471c9d-a700-463d-a753-0cba3c32c5d0",
+      "name": "Get many members",
+      "webhookId": "5c240c13-6100-446f-aad7-3ddb6272e4d6",
+      "credentials": {
+        "discordBotApi": {
+          "id": "9tkZB3TvJn1RnoWl",
+          "name": "Discord Bot account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "agendar-cita",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -992,
+        96
+      ],
+      "id": "15d29a34-f2d1-43a3-9b49-55c2a6c91e62",
+      "name": "Webhook",
+      "webhookId": "e30448d8-1ac8-4616-b733-0cd356c80163"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0cf4bc93-2c5d-4e07-a7c5-482430673220",
+              "name": "body.plan",
+              "value": "={{ $('Code in JavaScript').item.json.body.plan }}",
+              "type": "string"
+            },
+            {
+              "id": "37d461ae-8da9-4690-aab5-71cf4a62fa13",
+              "name": "body.id_usuario",
+              "value": "={{ $('Code in JavaScript').item.json.body.id_usuario }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -320,
+        -96
+      ],
+      "id": "eab2591d-c80f-4249-9fd6-cad0edff6b09",
+      "name": "Sanitas"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ec46c046-d822-4f03-82d3-6556d8de2345",
+              "name": "body.plan",
+              "value": "={{ $('Code in JavaScript').item.json.body.plan }}",
+              "type": "string"
+            },
+            {
+              "id": "a39293c5-21db-4ac8-97d7-28d1215cf3af",
+              "name": "body.id_usuario",
+              "value": "={{ $('Code in JavaScript').item.json.body.id_usuario }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -320,
+        96
+      ],
+      "id": "cc68f116-e924-46f0-a246-8694d99d6389",
+      "name": "Coomeva"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6304e081-6acc-4b2a-bc62-700be0297c87",
+              "name": "body.plan",
+              "value": "={{ $('Code in JavaScript').item.json.body.plan }}",
+              "type": "string"
+            },
+            {
+              "id": "cd30e40f-8029-4528-b443-4608812b7c73",
+              "name": "body.id_usuario",
+              "value": "={{ $('Code in JavaScript').item.json.body.id_usuario }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -320,
+        288
+      ],
+      "id": "2d32a5c1-abf5-46b5-88c0-4dc982b6909f",
+      "name": "Sura"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Sanitas",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Coomeva",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Sura",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append or update row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Get many members",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many members": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sanitas": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Coomeva": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sura": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "627f5592-b135-4cf1-bc78-659bf7994d68",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "c73aec00f57b19a60e070c620155112cf789e927cd7cae79cb911889824abfc6"
+  },
+  "id": "oriI2IU454AJxwE7",
+  "tags": []
+}
